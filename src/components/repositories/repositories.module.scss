@@ -1,0 +1,115 @@
+@import "../../styles/variables.module";
+
+.container {
+  padding: 2rem;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  & > *:not(:last-child):not(.title) {
+    margin-bottom: 3rem;
+  }
+
+  .title {
+    @extend %title_style;
+  }
+
+  .add_repo_container {
+    text-align: center;
+
+    & > *:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+
+    .add_repo_input {
+      position: relative;
+
+      .search_results_container {
+        position: absolute;
+        border: none;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        background-color: lighten($background-color, 5%);
+        box-shadow: 0 5px 6px 2px #00000035;
+        max-height: 20rem;
+        width: 150%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        z-index: 1;
+
+        .search_result {
+          @extend %ellipsis;
+          text-align: left;
+          margin: 0 0.2rem;
+          padding: 0.5rem 1rem;
+          background-color: lighten($background-color, 5%);
+          color: $text-color-2;
+          cursor: pointer;
+
+          &:hover {
+            color: $green-active-bg-color;
+          }
+
+          &:active {
+            color: $text-color-2;
+          }
+
+          &:not(:last-child) {
+            border-bottom: 1px solid darken($background-color, 5%);
+          }
+        }
+      }
+    }
+
+    button {
+      .input_loader {
+        position: relative;
+        top: initial;
+        right: initial;
+        margin: 0.2rem 1rem;
+      }
+    }
+  }
+
+  .repo_list {
+    padding: 2.5rem;
+    color: $text-color-2;
+    border: 2px solid $header-color;
+    border-radius: 1rem;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    .repo {
+      color: $text-color-2;
+      cursor: pointer;
+      position: relative;
+
+      &:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+
+      &.selected {
+        color: $green-active-bg-color;
+        cursor: not-allowed;
+      }
+
+      &:not(.selected):hover {
+        color: $text-color-3;
+      }
+
+      &:not(.selected):active {
+        color: $text-color-2;
+      }
+
+      svg {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        left: -1.7rem;
+        top: calc(50% - 10px);
+        fill: $green-active-bg-color;
+      }
+    }
+  }
+}

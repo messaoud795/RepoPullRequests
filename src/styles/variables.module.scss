@@ -1,0 +1,140 @@
+$scrollbar-width: 6px;
+
+$dark-blue: #12253D;
+$header-color: #3E3E3E;
+$background-color: #263238;
+
+$text-color-1: #A1B6B1;
+$text-color-2: #B8B8B8;
+$text-color-3: #BFE4E3;
+$text-color-4: #DBDBDB;
+$text-color-5: #818181;
+
+$green-inactive-bg-color: #4F6C5C;
+$green-active-bg-color: #16CC8F;
+
+%ellipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+%button_style {
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+    background-color: $green-inactive-bg-color;
+    color: $text-color-1;
+    border: none;
+    outline: none;
+    border-radius: 0.2rem;
+
+    &:not(:disabled):hover {
+        color: $dark-blue;
+        background-color: $green-active-bg-color;
+    }
+
+    &:not(:disabled):active {
+        color: $text-color-1;
+        background-color: $green-inactive-bg-color;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        background-color: darken($green-inactive-bg-color, 15%);
+    }
+}
+
+%title_style {
+    color: $text-color-2;
+    font-size: x-large;
+    margin-bottom: 3rem;
+}
+
+.input_loader {
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 10px);
+    height: 20px;
+    width: 20px;
+
+    @keyframes around {
+        0% {
+            transform: rotate(0deg)
+        }
+        100% {
+            transform: rotate(360deg)
+        }
+    }
+
+    &::after,
+    &::before {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        border-width: 2px;
+        border-color: $text-color-2 $text-color-2 transparent transparent;
+        border-style: solid;
+        border-radius: 20px;
+        box-sizing: border-box;
+        top: 0;
+        left: 0;
+        animation: around 0.7s ease-in-out infinite;
+    }
+
+    &::after {
+        animation: around 0.7s ease-in-out 0.1s infinite;
+        background: transparent;
+    }
+}
+
+%input_style {
+    padding: 0.5rem 1rem;
+    background-color: lighten($background-color, 10%);
+    border: none;
+    border-bottom: 3px solid $green-inactive-bg-color;
+    outline: none;
+    color: $text-color-2;
+
+    &:active,
+    &:focus {
+        border-bottom: 3px solid $green-active-bg-color;
+        background-color: lighten($background-color, 15%);
+    }
+}
+
+%label_style {
+    color: $text-color-2;
+}
+
+%scrollbar_style {
+    &::-webkit-scrollbar,
+    *::-webkit-scrollbar {
+        width: $scrollbar-width;
+        height: $scrollbar-width;
+    }
+
+    &::-webkit-scrollbar-thumb,
+    *::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-color: #AAAAAA;
+
+        &:hover {
+            background-color: grey;
+        }
+
+        &:active {
+            background-color: #AAAAAA;
+        }
+    }
+}
+
+%text_center_box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

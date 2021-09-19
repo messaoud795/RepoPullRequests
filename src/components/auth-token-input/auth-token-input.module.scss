@@ -1,0 +1,40 @@
+@import "../../styles/variables.module";
+
+.container {
+    padding: 2rem;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    & > *:not(:last-child):not(.title) {
+        margin-bottom: 3rem;
+    }
+
+    .title {
+        @extend %title_style;
+    }
+
+    .input_wrapper {
+        position: relative;
+
+        input {
+            width: 300px;
+        }
+
+        svg {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -2rem;
+            top: calc(50% - 10px);
+
+            &.input_error_icon {
+                fill: red;
+            }
+
+            &.input_check_icon {
+                fill: $green-active-bg-color
+            }
+        }
+    }
+}

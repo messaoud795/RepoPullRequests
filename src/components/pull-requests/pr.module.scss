@@ -1,0 +1,46 @@
+@import "../../styles/variables.module";
+
+.container {
+  width: 100%;
+  position: relative;
+  min-height: 15rem;
+  .table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    & td,
+    & th {
+      border: 1px solid #ddd;
+      padding: 1.5rem;
+    }
+    & tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    & tr:hover {
+      background-color: #ddd;
+    }
+
+    & th {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      background-color: #79b4b7;
+      color: white;
+    }
+  }
+  loader {
+    position: relative;
+    top: initial;
+    right: initial;
+    margin: 0.2rem 1rem;
+  }
+  .loader {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

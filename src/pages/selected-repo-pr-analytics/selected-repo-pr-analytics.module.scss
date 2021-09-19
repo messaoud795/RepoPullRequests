@@ -1,0 +1,30 @@
+@import "../../styles/variables.module";
+
+.container {
+    margin-top: 2rem;
+
+    .empty_data_container,
+    .loader_container {
+        margin-top: 10rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .empty_data_container {
+        font-size: x-large;
+        color: $text-color-1;
+    }
+
+    .repo_title_filter_container {
+        text-align: right;
+        padding: 0 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .pr_analytics_container {
+        & > * {
+            margin-bottom: 3rem;
+        }
+    }
+}
