@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import style from "./repositories.module.scss";
 import { createStructuredSelector } from "reselect";
 import { AppDispatch } from "../../redux/store";
@@ -23,7 +23,6 @@ import produce from "immer";
 import ClickAwayListener from "react-click-away-listener";
 import { TimeOutType } from "../../types/app.types";
 import IconCheckMark from "../../images/svg/icon-check-mark.svg";
-import PRComponent from "../pull-requests/pr.component";
 
 export interface RepositoriesComponentProps
   extends RepositoriesComponentPropsFromRedux {}
@@ -47,13 +46,21 @@ function RepositoriesComponent({
   const [isSearchInProgress, setIsSearchInProgress] = useState<boolean>(false);
   const [isRepoRequestInProgress, setIsRepoRequestInProgress] =
     useState<boolean>(false);
+  const _isMounted = useRef(true); // Initial value _isMounted = true
 
   useEffect(() => {
-    setIsRepoSelected(searchResults.some((r) => r.selected));
+    return () => {
+      // ComponentWillUnmount in Class Component
+      _isMounted.current = false;
+    };
+  }, []);
+  useEffect(() => {
+    if (_isMounted.current)
+      setIsRepoSelected(searchResults.some((r) => r.selected));
   }, [searchResults]);
 
   useEffect(() => {
-    setIsRepoRequestInProgress(false);
+    if (_isMounted.current) setIsRepoRequestInProgress(false);
   }, [repoList]);
 
   const addSelectedRepo = () => {
@@ -175,7 +182,6 @@ function RepositoriesComponent({
               </div>
             ))}
       </div>
-      {!isEmpty(selectedRepoUrl) && <PRComponent />}
     </div>
   );
 }

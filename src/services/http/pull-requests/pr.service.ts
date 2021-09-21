@@ -19,8 +19,6 @@ export async function getPR(
     },
   });
 
-  console.log(typeof response);
-
   results = response?.map((el) => {
     let pr: PrResponse = {
       id: el.id,
