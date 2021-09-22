@@ -13,7 +13,7 @@
     & td,
     & th {
       border: 1px solid #ddd;
-      padding: 1.5rem;
+      padding: 1rem 1.3rem;
     }
     & tr:nth-child(even) {
       background-color: #f2f2f2;
@@ -29,19 +29,5 @@
       background-color: #79b4b7;
       color: white;
     }
-  }
-
-  .loader {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .prPlot {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2rem;
   }
 }
